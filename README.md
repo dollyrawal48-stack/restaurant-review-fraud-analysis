@@ -36,7 +36,7 @@ All queries live in [`queries.sql`](queries.sql), including:
 - **Q4** — Reviewer diversity ratio per restaurant (collusion-ring detector)
 - **Fraud Risk Score** — full CTE pipeline combining all four normalized signals into the final weighted score
 
-Output: [`fraud_risk_scores.csv`](./fraud_risk_scores%20%281%29.csv) — one row per restaurant with the component breakdown and final score.
+Output: [`fraud_risk_scores.csv`](https://github.com/dollyrawal48-stack/restaurant-review-fraud-analysis/blob/main/fraud_risk_scores.csv) — one row per restaurant with the component breakdown and final score.
 
 ## Dashboard
 
