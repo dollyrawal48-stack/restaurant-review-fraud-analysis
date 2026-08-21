@@ -12,9 +12,9 @@ Real Yelp review data (Cleveland, OH), sourced from a public GitHub mirror of th
 
 | Table | Rows | Columns |
 |---|---|---|
-| `restaurants.csv` | 1,703 | `restaurant_id`, `restaurant_name`, `city`, `cuisine` |
-| `users.csv` | 27,516 | `user_id`, `account_age_days`, `total_reviews` |
-| `reviews.csv` | 72,981 | `review_id`, `restaurant_id`, `user_id`, `rating`, `review_date` |
+| `restaurants(1).csv` | 1,703 | `restaurant_id`, `restaurant_name`, `city`, `cuisine` |
+| `users(1).csv` | 27,516 | `user_id`, `account_age_days`, `total_reviews` |
+| `reviews(1).csv` | 72,981 | `review_id`, `restaurant_id`, `user_id`, `rating`, `review_date` |
 
 > Only businesses tagged `Restaurants` or `Food` were kept from the raw Yelp business file. `account_age_days` was derived from each user's `yelping_since` date.
 
@@ -29,14 +29,14 @@ Four signals feed into the Fraud Risk Score, each normalized to a 0–100 scale 
 | Review Velocity | 20% | Reviews per 30 days |
 | Reviewer Diversity | 10% | 1 − (unique reviewers / total reviews) — low diversity flags collusion rings |
 
-All queries live in [`sql/queries.sql`](sql/queries.sql), including:
+All queries live in [`queries.sql`](queries.sql), including:
 - **Q1** — Monthly rating trend + a spike detector using `LAG()` to catch month-over-month jumps > 1.0 star
 - **Q2** — Frequent reviewers, plus a rolling 7-day burst detector (catches bot-like posting velocity a simple `COUNT > 30` would miss)
 - **Q3** — Restaurants with unusually many 5-star reviews from accounts < 15 days old
 - **Q4** — Reviewer diversity ratio per restaurant (collusion-ring detector)
 - **Fraud Risk Score** — full CTE pipeline combining all four normalized signals into the final weighted score
 
-Output: [`data/fraud_risk_scores.csv`](data/fraud_risk_scores.csv) — one row per restaurant with the component breakdown and final score.
+Output: [`data/fraud_risk_scores(1).csv`](fraud_risk_scores%20%281%29.csv) — one row per restaurant with the component breakdown and final score.
 
 ## Dashboard
 
@@ -58,6 +58,6 @@ MySQL 8.0 · Python (data cleaning) · Power BI Desktop
 
 ## How to reproduce
 
-1. Load `data/restaurants.csv`, `data/users.csv`, `data/reviews.csv` into MySQL.
+1. Load `restaurants(1).csv`, `users(1).csv`, `reviews(1).csv` into MySQL.
 2. Run `sql/queries.sql` to reproduce Q1–Q4 and the Fraud Risk Score.
 3. Load all 4 CSVs (including `fraud_risk_scores.csv`) into Power BI, relate on `restaurant_id` / `user_id`, and build the 3 dashboard pages.
