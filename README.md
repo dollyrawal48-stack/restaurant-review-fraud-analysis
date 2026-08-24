@@ -65,7 +65,7 @@ MySQL 8.0 · Python (data cleaning) · Power BI Desktop
 ## 📊 Dashboard Preview
 
 ### Overview
-![Overview Dashboard](overview.png)
+![Overview Dashboard](Overview.png)
 
 ### Fraud Risk Analysis
 ![Fraud Risk Analysis](fraud-score.png)
