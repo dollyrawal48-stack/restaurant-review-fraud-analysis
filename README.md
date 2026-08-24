@@ -61,3 +61,14 @@ MySQL 8.0 · Python (data cleaning) · Power BI Desktop
 1. Load `restaurants.csv`, `users.csv`, `reviews.csv` into MySQL.
 2. Run `sql/queries.sql` to reproduce Q1–Q4 and the Fraud Risk Score.
 3. Load all 4 CSVs (including `fraud_risk_scores.csv`) into Power BI, relate on `restaurant_id` / `user_id`, and build the 3 dashboard pages.
+
+## 📊 Dashboard Preview
+
+### Overview
+![Overview Dashboard](overview.png)
+
+### Fraud Risk Analysis
+![Fraud Risk Analysis](fraud-score.png)
+
+### Reviewer Behavior Analysis
+![Reviewer Behavior](reviewer-behavior.png)
